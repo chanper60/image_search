@@ -1,9 +1,11 @@
-**README.md (Corrected Setup Sequence)**
-
-
-# AI Infrastructure Engineer Coding Challenge - Product Matching (Async Gradio - Image & Text)
+# image search system with Docker
 
 This repository contains an updated solution for the AI Infrastructure Engineer coding challenge. It uses Gradio as the UI and orchestrator, running inside a Docker container and utilizing asynchronous calls for improved performance. It implements an end-to-end product matching system supporting **both image and text inputs**, leveraging NVIDIA Triton Inference Server, TensorRT, Qdrant, and MongoDB.
+
+## Model of choise 
+- open ai clip, having single vectoe space for both text and image embedding
+- with 6GB VRAM available on local GTX 1660 TI GPU, clip model was usable compared other big ViTs. 
+                    
 
 **System Architecture:**
 
@@ -54,8 +56,9 @@ This repository contains an updated solution for the AI Infrastructure Engineer 
 
 1.  **Clone the Repository:**
     ```bash
-    git clone <your-repo-url>
-    cd ai-infra-challenge-gradio-async # Or your chosen directory name
+    git clone git@github.com:chanper60/image_search.git
+
+    cd image_search # Or your chosen directory name
     ```
 
 2.  **Prepare Sample Data:**
@@ -63,6 +66,8 @@ This repository contains an updated solution for the AI Infrastructure Engineer 
     *   Create/Edit `sample_data/metadata.json`.
 
 3.  **Quantize BOTH Models (CRITICAL STEP):**
+    - Create Onnx files usig `export_onnx.py` in scripts folder
+    - use bash commands in `bash.sh` file to create the tensorrt plan files
     *   Generate `model.plan` for **image encoder** -> `model_repository/clip_image_trt/1/model.plan`
     *   Generate `model.plan` for **text encoder** -> `model_repository/clip_text_trt/1/model.plan`
     *   Ensure `config.pbtxt` files are correct.
