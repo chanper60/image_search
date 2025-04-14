@@ -1,0 +1,6 @@
+qdrant-client>=1.7.0
+pymongo>=4.0
+transformers
+torch
+pillow
+numpy

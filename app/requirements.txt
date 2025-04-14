@@ -1,0 +1,10 @@
+gradio>=3.0,<4.0
+requests # Still needed for processor download, but not for runtime inference calls
+aiohttp # For async HTTP calls to Triton
+qdrant-client>=1.7.0
+pymongo>=4.0
+numpy
+pillow
+transformers # For CLIP Processor/Tokenizer
+torch # For Processor/Tokenizer
+python-dotenv # For local testing if needed, ignored in container
