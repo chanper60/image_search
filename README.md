@@ -19,28 +19,6 @@ This repository contains an updated solution for the AI Infrastructure Engineer 
     *   It logs events/errors to **MongoDB Logging** database (in Docker).
     *   It formats and displays results back in the Gradio UI.
 
-**Core Technologies:**
-
-*   **UI & Orchestration:** Gradio (Containerized, Async)
-*   **Async HTTP Client:** aiohttp
-*   **Inference Serving:** NVIDIA Triton Inference Server (serving `clip_image_trt`, `clip_text_trt`)
-*   **Model Optimization:** TensorRT (User task)
-*   **Models:** OpenAI CLIP ViT-B/32 (Image & Text Encoders) or equivalent
-*   **Vector Database:** Qdrant
-*   **Metadata/Logging Database:** MongoDB
-*   **Containerization:** Docker, Docker Compose (All services including Gradio app)
-
-**Addressing Challenge Requirements & Bonus Points:**
-
-*   **Docker Containerization:** **Yes.** All components (Triton, Qdrant, MongoDB x2, Gradio App) are containerized.
-*   **Latency Optimization (Batching/Async):** **Yes.** Triton's dynamic batching enabled; Gradio app uses `async`/`aiohttp` for non-blocking Triton calls.
-*   **Clean Code:** **Yes.** Modular functions, docstrings, type hints, error handling, logging.
-*   **API Documentation:** N/A (Gradio UI), but code is documented.
-*   **Sample Data & Population:** **Yes.**
-*   **Gradio/WebUI Demo:** **Yes.**
-*   **Architecture/Scalability:** **Improved.** Containerized async app is better than prior versions.
-*   **Robustness:** **Yes.** Error handling and logging implemented.
-
 **Prerequisites:**
 
 *   Docker Engine
@@ -58,7 +36,7 @@ This repository contains an updated solution for the AI Infrastructure Engineer 
     ```bash
     git clone git@github.com:chanper60/image_search.git
 
-    cd image_search # Or your chosen directory name
+    cd image_search 
     ```
 
 2.  **Prepare Sample Data:**
