@@ -3,7 +3,7 @@
 This repository contains an updated solution for the AI Infrastructure Engineer coding challenge. It uses Gradio as the UI and orchestrator, running inside a Docker container and utilizing asynchronous calls for improved performance. It implements an end-to-end product matching system supporting **both image and text inputs**, leveraging NVIDIA Triton Inference Server, TensorRT, Qdrant, and MongoDB.
 
 ## Model of choice 
-- open ai clip, having single vectoe space for both text and image embedding
+- open ai clip, having single vector space for both text and image embedding
 - with 6GB VRAM available on local GTX 1660 TI GPU, clip model was usable compared other big ViTs. 
                     
 
