@@ -369,30 +369,31 @@ async def find_product_matches(input_image: Image.Image, input_text: str):
 with gr.Blocks() as demo:
     gr.Markdown("# AI Product Matcher Demo (Async - Image & Text)")
     gr.Markdown("Upload an image OR enter text description to find similar items.")
+    example_images_path = [
+        os.path.abspath(os.path.join("sample_data", "images", img))
+        for img in ["6440.jpg", "2826.jpg", "4523.jpg"]
+        if os.path.exists(os.path.abspath(os.path.join("sample_data", "images", img)))
+    ]
+    example_texts = ["blue shoes", "nike shoes", "grey sandals"]
+    
     with gr.Row():
         with gr.Column(scale=1):
             input_image = gr.Image(type="pil", label="Upload Product Image")
             gr.Markdown("### OR")
             input_text = gr.Textbox(label="Enter Text Description", placeholder="e.g., red running shoes")
             submit_button = gr.Button("Find Matches")
+            if example_images_path:
+                gr.Examples(
+                    examples=example_images_path, inputs=input_image, outputs=[],
+                    fn=find_product_matches, cache_examples=False, label="Example Images (Click to Run)"
+                )
+            gr.Examples(
+                examples=example_texts, inputs=input_text, outputs=[],
+                fn=find_product_matches, cache_examples=False, label="Example Texts (Click to Run)"
+            )
         with gr.Column(scale=2):
             results_gallery = gr.Gallery(label="Matched Product Images", visible=True, columns=3, rows=2, object_fit="contain", height="auto") # Set style in constructor
             results_markdown = gr.Markdown(label="Matching Results")
-    example_images_path = [
-        os.path.abspath(os.path.join("sample_data", "images", img))
-        for img in ["product1.jpg", "product2.jpg", "product3.jpg"]
-        if os.path.exists(os.path.abspath(os.path.join("sample_data", "images", img)))
-    ]
-    example_texts = ["blue jeans", "stylish t-shirt", "comfortable footwear"]
-    if example_images_path:
-         gr.Examples(
-             examples=example_images_path, inputs=input_image, outputs=[results_markdown, results_gallery],
-             fn=find_product_matches, cache_examples=False, label="Example Images (Click to Run)"
-         )
-    gr.Examples(
-         examples=example_texts, inputs=input_text, outputs=[results_markdown, results_gallery],
-         fn=find_product_matches, cache_examples=False, label="Example Texts (Click to Run)"
-     )
     submit_button.click(
         fn=find_product_matches,
         inputs=[input_image, input_text],

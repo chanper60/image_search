@@ -20,8 +20,8 @@ MONGO_META_URI = "mongodb://admin:password@localhost:27017/"
 MONGO_META_DB_NAME = "product_metadata"
 MONGO_META_COLLECTION_NAME = "products"
 
-METADATA_FILE = "/home/aakash/Desktop/ai-infra-challenge-gradio/sample_data/metadata.json"
-IMAGE_DIR = "/home/aakash/Desktop/ai-infra-challenge-gradio/sample_data/images/"
+METADATA_FILE = "/home/aakash/Desktop/image_search/sample_data/metadata.json"
+IMAGE_DIR = "/home/aakash/Desktop/image_search/sample_data/images/"
 
 CLIP_MODEL_NAME = "openai/clip-vit-base-patch32"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
